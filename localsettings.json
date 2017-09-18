@@ -1,0 +1,11 @@
+{
+    "environment": "production",
+    "url": "trendypublishing.com",
+    "dbhost": "neoDbToFly",
+    "dbname": "wordpress",
+    "dbuser": "organ151_remote",
+    "dbpass": "westside77!",
+    "wpuser": "theCreator",
+    "wppass": "t0mzdez2!Q",
+    "wppath": "/home/organ151/public_html/trendypublishing";
+}
