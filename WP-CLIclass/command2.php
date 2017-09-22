@@ -53,15 +53,20 @@ public function go ($args, $assoc_args){
         *   wp tp post
        *
          * @when before_wp_load
-        */
-		$path = isset( $assoc_args['path'] ) ? $assoc_args['path'] : getcwd();
-		//$path = $path . '/' . $args[0];
-		$dbuser    = $assoc_args['dbuser'];
-		$dbpass    = $assoc_args['dbpass'];
-		$dbhost    = $assoc_args['dbhost'];
-		 if (empty($assoc_args['dbhost'])) {
-            $assoc_args['dbhost'] = '127.0.0.1';
-		$dbname = str_replace( '.', '_', $args[0] );
+		*/
+		$path = '/home/public_html/fakenews';
+		$dbuser = 'organRemote';		// sets user --> from config.ini 'user'.
+	    $dbpass = 'organRemotePassword';
+		$dbname = 'newOb';
+	    $url = 'fakenewsregistry.org';
+	    $wpuser = 'theCreator';
+		$wpemail = 'thecreator@orgmy.biz';
+		$wppass = '5ekoeXMFRIXuJ&lWLA';
+		$subcommand  = 'install';
+		$tit = 'Fake News Registry.org';
+		 
+            $dbhost = '127.0.0.1';
+		
 		  $config = \WP_CLI::get_runner()->config;
         $extra_config = \WP_CLI::get_runner()->extra_config;
 		// Download WordPress
@@ -77,22 +82,20 @@ public function go ($args, $assoc_args){
 		WP_CLI::log( 'Creating the database...' );
 		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( $db_create, $path ) );
 		// Install WordPress core.
-		$admin_user  = $assoc_args['admin_user'];
-		$admin_pass  = $assoc_args['admin_password'];
-		$admin_email = $assoc_args['admin_email'];
+		$admin_user  = $wpuser;
+		$admin_pass  = $wppass;
+		$admin_email = $wpemail;
 		$subcommand  = 'install';
-		$base_url    = $assoc_args['url'];
+		$base_url    = $url;
 		if ( isset( $assoc_args['multisite'] ) ) {
 			$subcommand = 'multisite-install';
 		}
 		$core_install = "wp --path=%s core %s --url=%s --title=%s --admin_user=%s --admin_password=%s --admin_email=%s";
 		WP_CLI::log( 'Installing WordPress...' );
-		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( $core_install, $path, $subcommand, 'https://' . $args[0], $args[0], $admin_user, $admin_pass, $admin_email ) );
-		if ( isset( $assoc_args['after_script'] ) ) {
-			WP_CLI::launch( $assoc_args['after_script'] . ' ' . $args[0] . '&>/dev/null' );
-		}
-		WP_CLI::success( "WordPress installed at $path" );
-	}
+		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( $core_install, $path, $subcommand, $url, $tit, $wpuser, $wppass, $wpemail ) );
+		
+		WP_CLI::success( "WordPress installed" );
+
 
         $mysqli = new mysqli($db_config['dbhost'], $db_config['dbuser'], $db_config['dbpass']);
         if (! $mysqli) {
@@ -111,7 +114,8 @@ public function go ($args, $assoc_args){
             WP_CLI::error(sprintf("Unable to create new schema '%s'.", $db_config['dbname']));
             return;
         }
-        $mysqli->close();        WP_CLI::success(sprintf("Created '%s' database.", $db_config['dbname']));
+		$mysqli->close();       
+		 WP_CLI::success(sprintf("Created '%s' database.",$dbname));
 	}
 					
 		public function std ($args, $assoc_args)
@@ -119,56 +123,33 @@ public function go ($args, $assoc_args){
 			$aliaie=array('@orgbiz','@gov','@glo','@orgbizes','@tp','@tpau','@vape','@ckww','@ckwwes');
 				foreach ($aliaie as $alias){
 					WP_CLI::log( 'At site %s' );
+
+
+
+
+
+
+					
 		}
 	}
 			
-	 public function set($args, $assoc_args){
-       /**
-     * setup WP
-     *sets all the plugins and theme info for my sites
-     * ## OPTIONS
-     *
-     * <site>...
-     * : The site(s) to setup. ie foldername
-     *
-     * [--path=<path>]
-     * : path to site
-     *
-	 * [--plugin_list=<plugin_list>]
-     * : path to plugin txt file
-     * ---
-     * default: success
-     * options:
-     *   - success
-     *   - error
-     * ---
-     *
-     * ## EXAMPLES
-     *   *     wp tp set 
-     *    * @when before_wp_load
-     */ 
-      $path = $getSiteDeets('$path');
-	$id = $GLOBALS['IDENTIFIER'];
+	 public function fnrset( ){
+        $path = '/home/organ151/public_html/fakenews';
+		$dbuser = 'organ_remote';		// sets user --> from config.ini 'user'.
+	    $dbpass = 'organRemotePassword';
+	    $url = 'fakenewsregistry.org';
+	    $wpuser = 'theCreator';
+		$wppass = '5ekoeXMFRIXuJ&lWLA';
+		$wpemail = 'thecreator@orgmy.biz';
+		$tit = 'Fake News Registry.org';
+		$id = 'fnr';
  		WP_CLI::log( 'Removing extra themes...' );
 		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s theme delete twentyfifteen', $path ) );
 		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s theme delete twentysixteen', $path ) );
-	WP_CLI::log( 'Removing transients & regen any lost pics...' );
-	WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s transient delete --all', $path ) );
-	WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s media regenerate --only-missing --yes', $path ));
-	
-	WP_CLI::log( 'ADDING default plugins...' );	
-		if ( isset( $assoc_args['plugin_list'] ) && file_exists( $assoc_args['plugin_list'] ) ) {
-			$plugins = file_get_contents( $assoc_args['plugin_list'] );
-			$plugins = array_filter( explode( PHP_EOL, $plugins ) );
-				foreach ( $plugins as $plugin ) {
-WP_CLI::launch( \WP_CLI\Utils\report_batch_operation_results( 'wp --path%s plugin install --activate $plugin' ) );	
-	//					$result = WP_CLI::launch( $cmd, false, true );
-					WP_CLI::log( $result );
-				} 
-			echo exec('wp --path%s plugin status', $path )."\n";
-			} else {
-				WP_CLI::log( 'Plugin list not found' );
-				}
-		}
-	}		
+		WP_CLI::log( 'Removing transients & regen any lost pics...' );
+		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s transient delete --all', $path ) );
+		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s media regenerate --only-missing --yes', $path ));
+
+	}	
+}	
 WP_CLI::add_command('tp', 'tpCLI');

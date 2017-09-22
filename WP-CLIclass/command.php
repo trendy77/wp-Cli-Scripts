@@ -6,14 +6,7 @@ include_once('../tp-config.php');
 		public function go ($args, $assoc_args)
 		{
 			$path = isset( $assoc_args['path'] ) ? $assoc_args['path'] : getcwd();
-			$site_path = $path
-			$dbuser    = $assoc_args['dbuser'];
-			$dbpass    = $assoc_args['dbpass'];
-			$dbhost    = $assoc_args['dbhost'];
-				if (empty($assoc_args['dbhost'])) {
-					$assoc_args['dbhost'] = '127.0.0.1';
-				}
-			$dbname = str_replace( '.', '_', $args[0] );
+			$site_path = ($path);
 	
 			// Download WordPress
 			$download = "wp core download --path=%s";
@@ -71,7 +64,14 @@ include_once('../tp-config.php');
 				WP_CLI::log( 'Removing extra themes...' );
 				WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s theme delete twentyfifteen', $path ) );
 				WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s theme delete twentysixteen', $path ) );
-				WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s transient delete --all', $path ) );
+				    WP_CLI::log( 'Removing default plugins...' );
+					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s plugin delete hello', $path ) );
+					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s plugin delete akismet', $path ) );
+						WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s plugin delete no-follow', $path ) );
+					WP_CLI::log( 'Removing sample data...' );
+					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s db query "TRUNCATE TABLE suk_itposts; TRUNCATE TABLE suk_itpostmeta; TRUNCATE TABLE suk_itcomments; TRUNCATE TABLE suk_itcommentmeta;"', $path ) );
+					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s user meta update 1 show_welcome_panel "0"', $path ) );
+					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s transient delete --all', $path ) );
 				WP_CLI::log( 'Removing default plugins...' );	
 			if file_exists('/home/organ151/Scripts/plugsToInstall.txt') {
 				$plugins = file_get_contents('/home/organ151/Scripts/plugsToInstall.txt');

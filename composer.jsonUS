@@ -1,0 +1,163 @@
+{
+	"name"        : "trendy77/wpSetup",
+	"description" : "Site build stack.",
+	"keywords" : [ "wordpress" ],
+    	"license" : "GPL-2.0+",
+    	"authors" : [
+	        {
+	            "name" : "Trent Fischer",
+	            "email" : "email@somewhere.com",
+	            "role" : "Lead Developer"
+	        }
+	],
+		"type"        : "project",
+	"minimum-stability": "dev",
+
+	"repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        },
+		 {
+        "type": "package",
+        "package": {
+            "name": "deliciousbrains/wp-migrate-db-pro",
+            "type": "wordpress-plugin",
+            "version": "1.5",
+            "dist": {
+                "type": "zip",
+                "url": "https://deliciousbrains.com/dl/wp-migrate-db-pro-latest.zip?licence_key=adde1f7a-25c8-457c-8c6b-6b96dd7481ca&site_url=amazonaust.com.au"
+            },
+            "require": {
+                "composer/installers": "v1.0.7"
+            }
+        }
+    },
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/opTimise",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/opTimise.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/ai1schema",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/ai1schema.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/nofollow",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/nofollow.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/seo-image",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/seo-image.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/wp-migcli",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/wp-migcli.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/wp-migmedia",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/wp-migmedia.zip"
+            }
+        }
+	},
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/rssim",
+            "type": "wordpress-plugin",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/rssim.zip"
+            }
+        }
+	},
+	
+	{
+        "type": "package",
+        "package": {
+            "name": "trendy/newspaper",
+            "type": "wordpress-theme",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://orgmy.biz/plug/Newspaper.zip"
+            }
+        }
+	}
+	],
+	"config"      : {
+		"vendor-dir":  "vendor",
+		"secure-http":	false
+	},
+    "require": {
+        "johnpbloch/wordpress"       : "*",
+		"wpackagist-plugin/better-analytics": "*",
+		"wpackagist-plugin/featured-image-from-url": "*",
+		"wpackagist-plugin/featured-image-from-google-images": "*",
+		"wpackagist-plugin/amp"             : "*",
+	    "wpackagist-theme/evolve": "*",
+		"trendy/opTimise": "*",
+		"deliciousbrains/wp-migrate-db-pro": "*",
+		"trendy/newspaper": "*",
+		"trendy/nofollow": "*",
+		"trendy/seo-image": "*",
+		"trendy/ai1schema": "*",
+		"trendy/wp-migcli": "*",
+		"trendy/wp-migmedia": "*",
+		"trendy/rssim": "*",
+		"wpackagist-plugin/amp-html-sitemap" : "*"
+		   },
+   "extra": {
+		"wordpress-install-dir": "/home/organ151/public_html/us",
+		"installer-paths": {
+			"/home/organ151/public_html/ombiz/us/stuff/plugins/{$name}/": ["type:wordpress-plugin"],
+			"/home/organ151/public_html/ombiz/us/stuff/themes/{$name}/": ["type:wordpress-theme"]
+		}
+	}
+}			
