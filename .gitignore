@@ -1,3 +1,5 @@
 tp-config.php
 appsettings.json
 localsettings.json
+wp-config*.php
+*.yml
