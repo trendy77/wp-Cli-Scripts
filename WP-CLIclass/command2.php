@@ -112,36 +112,15 @@ public function go ($args, $assoc_args){
             return;
         }
         $mysqli->close();        WP_CLI::success(sprintf("Created '%s' database.", $db_config['dbname']));
-      		}
-			
-			
-public function maintain ($args, $assoc_args){
-
-$aliaie=array('@orgbiz','@gov','@glo','@orgbizes','@tp','@tpau','@vape','@ckww','@ckwwes');
-
-foreach ($aliaie as $alias){
-
-WP_CLI::log( 'At site %s' );
-	$input=array();
-	$input[0] = ('plugin update --all');  
-	$input[1] = ('cache flush');
-	$input[2] = ('transient delete-expired');
-	$input[3] = ('db optimize');	
-	$input[4]= ('media regenerate --only-missing --yes');
-	//$input[3] = ('media  $(wp eval 'foreach( get_posts(array("category" => 2,"fields" => "ids")) as $id ) { echo get_post_thumbnail_id($id). " "; }')
-
-	$input[5]=('plugin install /home/organ151/Scripts/plug/wp-cfm.zip');	
-	//     wp theme activate twentysixteen
-	//$input[4]=('wp theme install /home/organ151/themeN.zip');
-		
-		foreach ($input as $command){	
-		WP_CLI::log( 'Doing %s' );
-		$command = 'wp ' . $alias . ' ' . $command;
-		WP_CLI::launch( \WP_CLI\Utils\esc_cmd( $command, $alias ));
-				}
-	WP_CLI::success( "moving onto next site ..." );
 	}
-}
+					
+		public function std ($args, $assoc_args)
+		{
+			$aliaie=array('@orgbiz','@gov','@glo','@orgbizes','@tp','@tpau','@vape','@ckww','@ckwwes');
+				foreach ($aliaie as $alias){
+					WP_CLI::log( 'At site %s' );
+		}
+	}
 			
 	 public function set($args, $assoc_args){
        /**
@@ -165,10 +144,8 @@ WP_CLI::log( 'At site %s' );
      * ---
      *
      * ## EXAMPLES
-     *
-     *     wp tp set 
-     *
-     * @when before_wp_load
+     *   *     wp tp set 
+     *    * @when before_wp_load
      */ 
       $path = $getSiteDeets('$path');
 	$id = $GLOBALS['IDENTIFIER'];
@@ -191,7 +168,7 @@ WP_CLI::launch( \WP_CLI\Utils\report_batch_operation_results( 'wp --path%s plugi
 			echo exec('wp --path%s plugin status', $path )."\n";
 			} else {
 				WP_CLI::log( 'Plugin list not found' );
-					}
 				}
-			}
+		}
+	}		
 WP_CLI::add_command('tp', 'tpCLI');

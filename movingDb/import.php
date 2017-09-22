@@ -7,8 +7,9 @@
 		$alias = '@fnr';
 		$input=array();
 			$inputNum = 0;
-	
-			$input[$inputNum] = ('import /home/organ151/Scripts/'.$alias.'.xml --path='.$PATH .' --authors=create'); //[--category=<name>]
+			$input[$inputNum] = ('plugin install wordpress-importer --activate');  
+			$input[$inputNum++] = ("import /home/organ151/Scripts/fakenewsregistry.wordpress.2017-09-20.000.xml --authors=create --skip=image_resize");
+			
 			$input[$inputNum++] = 'post create --post_type=page --post_title=Home --post_status=publish --field=ID --format=ids)';
 		
 			$input[$inputNum++] = ('menu create "Main Navigation"');
