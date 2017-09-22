@@ -1,0 +1,173 @@
+# WP Installer default args
+
+core config:
+  base_path: /home/organ151/public_html
+  base_url: //organisemybiz.com
+  dbuser: organ_remote
+  dbpass: 
+  dbhost: 127.0.0.1
+  admin_user: test
+  admin_password: t0mzdez2!t0mzdez2!
+  admin_email: test@organisemybiz.com
+		extra-php: |
+        
+ # //wp config REMOVE REVISIONS
+ # //disable the blocking of script tags from within JavaScript 
+        define( 'WP_POST_REVISIONS', false);
+# Aliases to other WordPress installs (e.g. `wp @staging rewrite flush`)
+# An alias can include 'user', 'url', 'path', 'ssh', or 'https' 
+
+@ama:
+  url: https://amazonaust.com,au
+  user: amazonAustralia
+  path: /home/organ151/public_html/amazonaust
+
+@ckww:
+  user: customkits
+  path: /home/organ151/public_html/customkits
+  url: //customkitsworldwide.com
+  
+@fnr:
+  user: trendyDark
+  path: /home/organ151/public_html/fakenews
+  url: https://fakenewsregistry.org
+    
+@gov:
+  url: https://govnews.info
+  user: govfeed
+  path: /home/organ151/public_html/govnews
+ 
+@glo:
+  url: https://globetravelsearch.com
+  user: trendyTravel
+  path: /home/organ151/public_html/travelsearch  
+
+@orgbizes:
+  url: https://es.organisemybiz.com
+  user: elorganise
+  path: /home/organ151/public_html/es
+  
+@orgbiz:
+  url: https://organisemybiz.com
+  user: headlines
+  path: /home/organ151/public_html
+
+# @spec:
+  url: organisemybiz.com/specialoffers
+  user: theCreator
+  path: /home5/organli6/public_html/specialoffers
+   
+@style:
+  path: /home/organ151/public_html/stylech
+  url: https://womenstylechannel.com
+  user: WomenStyleChannel
+
+@us:
+  path: /home/organ151/public_html/us
+  url: https://organizemybiz.com
+  user: headlines
+  
+@vape:
+  url: https://vapedirectory.co
+  user: trendyvape
+  path: /home/organ151/public_html/vapedirectory
+
+@tp:
+  user: theCreator
+  path: /home/organ151/public_html/trendypublishing
+  url: https://trendypublishing,com
+  
+@tpau:
+  user: theCreator
+  path: /home/organ151/public_html/au
+  url: https://trendypublishing,com.au
+  
+#14
+# Alias groups can be nested
+@tit:
+ - @us
+ - @gov
+ - @glo
+ - @fnr
+ - @orgbiz
+ - @orgbizes
+ - @spec
+ - @style
+ - @ckww
+ - @ama
+ 
+@corp:
+ - @tpau
+ - @tp
+  
+@fnr:
+  url: //fakenewsregistry.com
+  admin_user: theCreator
+  admin_password:5ekoeXMFRIXuJ&lWLA
+  dbuser: organ_remote
+  dbpass:mwS)fStHP3as
+  path: /home/organli6/public_html
+@fnres:
+  url: //fakenewsregistry.com/es
+  admin_user: creador
+  admin_password:Joker999
+  dbname: organli6_fake
+  path: /organli6/public_html/es
+  dbhost: localhost 
+
+@orgbizes:
+    url: //es.organisemybiz.com
+    admin_user: elorganise
+    admin_password:arribaarribaFuego
+    dbuser: organ_remote
+    dbpass:mwS)fStHP3as
+	path: /home/organ151/public_html/es
+@fnr:
+    url: //fakenewsregistry.com
+    admin_user: theCreator
+    admin_password:5ekoeXMFRIXuJ&lWLA
+    dbuser: organ_remote
+    dbpass:mwS)fStHP3as
+    path: /organ151/public_html/cliTsript
+@fnres:
+    url: //fakenewsregistry.com/es
+    admin_user: creador
+    admin_password:Joker999
+    dbuser: organli6_fake
+    dbpass:
+   path: /organ151/public_html/cliTsript
+@ckww:
+  url: //customkitsworldwide.com
+  admin_user: customkits
+  admin_password:t0mzdez2!
+  dbuser: ckww_77c
+  dbpass: 
+  path: /ckww/public_html
+@ckwwes:
+  url: //es.customkitsworldwide.com
+  admin_user: trendinho
+  admin_password: y(2o%3Cs82zmxc!Ckk
+  dbuser: ckww_77c
+  dbpass:
+  path: /ckww/public_html/es
+@gov:
+  url: //govnews.info
+  admin_user: govfeed
+  admin_password:0Q!L!Y34G^$kO8tQuS@INZg0
+  dbuser: organ_remote
+  dbpass:mwS)fStHP3as
+  path: /organ151/public_html/govfeed
+@vape:
+  url: //vapedirectory.co
+  admin_user: trendyvape
+  admin_password:t0mzdez2!
+  buser: organ_remote
+  dbpass:mwS)fStHP3as
+  path: /organ151/public_html/vapedirectory
+   
+   
+# https://make.wordpress.org/cli/handbook/config/         
+# `--admin_user=<admin_user>` sets request to a specific WordPress admin_user $
+# wp --admin_user=wpcli eval 'echo wp_get_current_user()->user_email;'
+
+  
