@@ -1,16 +1,12 @@
 <?php
 
-// common vars to define for all...
-	define('WP_CACHE', true);
-	define('WP_DEBUG', false);
-	define('SAVEQUERIES', false);
-	define('SCRIPT_DEBUG', false);
-	define('CONCATENATE_SCRIPTS', true );
-	define('WP_DEBUG_LOG', true);
-	define('WP_DEBUG_DISPLAY', false);
-	define('ENFORCE_GZIP', true);
+
+function getSiteDeets($IDENTIFIER)
+{
 
 
+
+}
 switch($GLOBALS['IDENTIFIER']){
 		case 'example':
 		// site info	
@@ -39,6 +35,16 @@ switch($GLOBALS['IDENTIFIER']){
 			//define('DB_PASSWORD', 'westside77!');
 			define('TABLE_PREFIX','wp_'); 
 			define( 'WP_POST_REVISIONS', false);
+			// common vars to define for all...
+			define('WP_CACHE', true);
+			define('WP_DEBUG', false);
+			define('SAVEQUERIES', false);
+			define('SCRIPT_DEBUG', false);
+			define('CONCATENATE_SCRIPTS', true );
+			define('WP_DEBUG_LOG', true);
+			define('WP_DEBUG_DISPLAY', false);
+			define('ENFORCE_GZIP', true);
+
 			break;			
 		
 		case 'tpau':
@@ -199,45 +205,21 @@ switch($GLOBALS['IDENTIFIER']){
 			define('ADDY','es.customkitsworldwide.com');
 			define('UA','UA-84079763-');
 			break;
-		}
-					
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				}
+}
 
-			function otherOptions(){
-			define('WP_DEBUG', false);
-			define( 'CONCATENATE_SCRIPTS', true );
-			define( 'FORCE_SSL_ADMIN', true );
-			//define( 'WP_CONTENT_DIR', '.o/wp-content' );
-			//define( 'WP_CONTENT_URL', './orgmy.biz/tp/wp-content');
-			define('WP_POST_REVISIONS', false);
-			define( 'WP_CACHE', true );
-			define( 'WP_CRON_LOCK_TIMEOUT', 60 );
-			define( 'EMPTY_TRASH_DAYS', 0 ); // Zero days
-			define( 'WP_ALLOW_REPAIR', true );
-			define( 'DISALLOW_FILE_EDIT', true );
-			define('AUTOSAVE_INTERVAL', 68940);
-			define('WP_MEMORY_LIMIT', '256M');
-
-			}
+function otherOptions()
+{
+	define('WP_DEBUG', false);
+	define( 'CONCATENATE_SCRIPTS', true );
+	define( 'FORCE_SSL_ADMIN', true );
+	//define( 'WP_CONTENT_DIR', '.o/wp-content' );
+	//define( 'WP_CONTENT_URL', './orgmy.biz/tp/wp-content');
+	define('WP_POST_REVISIONS', false);
+	define( 'WP_CACHE', true );
+	define( 'WP_CRON_LOCK_TIMEOUT', 60 );
+	define( 'EMPTY_TRASH_DAYS', 0 ); // Zero days
+	define( 'WP_ALLOW_REPAIR', true );
+	define( 'DISALLOW_FILE_EDIT', true );
+	define('AUTOSAVE_INTERVAL', 68940);
+	define('WP_MEMORY_LIMIT', '256M');
+}

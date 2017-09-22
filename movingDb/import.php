@@ -1,35 +1,31 @@
 <?php
-// menu setup
-// add 'titles' menu 
-// att top categories (latest  + content + viral + contact + terms)
-
-$aliaie=array('@fnr','@us','@spec','@style','@gov','@glo','@orgbizes','@tp','@vape','@orgbiz', '@ckww');
+	// WP IMPORTER SCRIPT
+	//$aliaie=array('@us','@spec','@style','@gov','@glo','@orgbizes','@tp','@vape','@orgbiz', '@ckww');
 	//$aliaie=array('@us');
-//	foreach ($aliaie as $alias){
+	//	foreach ($aliaie as $alias){
 	//	echo ' At site ' . $alias." ";
-		$alias = '@fnr'
-	
+		$alias = '@fnr';
 		$input=array();
 			$inputNum = 0;
-			//$input[$inputNum] = ('db tables --format=csv');  
-		//	$input[$inputNum] = ('import /home/organ151/Scripts/'.$alias.'.xml --path='.$PATH .' --authors=create'); //[--category=<name>]
-			$input[$inputNum++] = ('cache flush');
+	
+			$input[$inputNum] = ('import /home/organ151/Scripts/'.$alias.'.xml --path='.$PATH .' --authors=create'); //[--category=<name>]
 			$input[$inputNum++] = 'post create --post_type=page --post_title=Home --post_status=publish --field=ID --format=ids)';
+		
 			$input[$inputNum++] = ('menu create "Main Navigation"');
 			$input[$inputNum++] = ('menu location assign main-navigation primary');
+	
 			$input[$inputNum++] = ('option update posts_per_page 6');
 			$input[$inputNum++] = ('option update show_on_front "page"');  
-			$input[$inputNum++] = ('option update page_on_front $(wp ' .$alias .' post list --post_type=page --post_status=publish --posts_per_page=1 --pagename=home --field=ID --format=ids)';
+			$input[$inputNum++] = ('option update page_on_front $(wp ' .$alias .' post list --post_type=page --post_status=publish --posts_per_page=1 --pagename=home --field=ID --format=ids');
+
 			$input[$inputNum++] = ('menu create "Catgory Navigation"');
-			#$input[$inputNum++] = ('user import-csv /home/organ151/Scripts/users1.csv');	
-			$input[$inputNum++] = ('media regenerate --only-missing --yes');
+			
+			$input[$inputNum++] = ('user import-csv /home/organ151/Scripts/users1.csv');	
+		
 			$input[$inputNum++] = ('rewrite structure "/%category%/%postname%/" --hard');
 			$input[$inputNum++] = ('rewrite flush --hard');
-			$input[$inputNum++] = ('menu location assign category-navigation top');
-			#$input[$inputNum++] = ('menu add ' dfsdfsd
-			#$input[$inputNum++] = ('menu l'
-			#$input[$inputNum++] = ('menu l'
-			//$input[$inputNum++] = ('theme install evolve'); 
+		
+			$input[$inputNum++] = ('theme install /home/organ151/public_html/ombiz/linstar.zip'); 
 			$input[$inputNum++] = ('scaffold child-theme LINSTAR --parent_theme=linstar --author="TDAFischer" --author_uri=http://orgmy.biz --activate');
 				
 				//$input[0] = ("core install");
@@ -43,8 +39,5 @@ $aliaie=array('@fnr','@us','@spec','@style','@gov','@glo','@orgbizes','@tp','@va
 		foreach ($input as $comms){	
 			$cmd = 'wp ' . $alias . ' ' . $comms;
 			echo exec($cmd)."\n";
-		}
-		echo 'done...' . $alias;
-	}
-	echo 'done all...';
-?>
+		};
+		echo 'done';

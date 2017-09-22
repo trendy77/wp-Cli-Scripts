@@ -1,14 +1,11 @@
 <?php
 	// array of sites to iterate through...
+	$aliaie=array('@us','@spec','@style','@gov','@glo','@orgbizes','@tp','@vape','@orgbiz', '@ckww');
+
+	foreach ($aliaie as $alias){
 	
-	//$aliaie=array('@us','@spec','@style','@gov','@glo','@orgbizes','@tp','@vape','@orgbiz', '@ckww');
-	
-	//$aliaie=array('fnr');
-	
-	//foreach ($aliaie as $alias){
-	//echo ' At site ' . $alias." ";
 	// commands to send...
-				// update all plugs
+		
 		$path = '/home/public_html/fakenews';
 		$dbuser = 'organRemote';		// sets user --> from config.ini 'user'.
 	    $dbpass = 'organRemotePassword';
