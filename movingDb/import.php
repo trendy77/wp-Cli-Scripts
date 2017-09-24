@@ -4,7 +4,9 @@
 	//$aliaie=array('@us');
 	//	foreach ($aliaie as $alias){
 	//	echo ' At site ' . $alias." ";
-		$alias = '@fnr';
+
+		$tSite = new tSite('@fnr');
+	
 		$input=array();
 			$inputNum = 0;
 			$input[$inputNum] = ('plugin install wordpress-importer --activate');  

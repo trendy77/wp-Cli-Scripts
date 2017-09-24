@@ -73,7 +73,7 @@ include_once('../tp-config.php');
 					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s user meta update 1 show_welcome_panel "0"', $path ) );
 					WP_CLI::launch( \WP_CLI\Utils\esc_cmd( 'wp --path=%s transient delete --all', $path ) );
 				WP_CLI::log( 'Removing default plugins...' );	
-			if file_exists('/home/organ151/Scripts/plugsToInstall.txt') {
+			if( file_exists('/home/organ151/Scripts/plugsToInstall.txt')) {
 				$plugins = file_get_contents('/home/organ151/Scripts/plugsToInstall.txt');
 				$plugins = array_filter( explode( PHP_EOL, $plugins ) );
 				foreach ( $plugins as $plugin ) {
