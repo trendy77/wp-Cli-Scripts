@@ -1,5 +1,28 @@
 <?php
 
+// common vars to define for all...
+	
+	define('SAVEQUERIES', false);
+	define('CONCATENATE_SCRIPTS', true );
+	define('ENFORCE_GZIP', true);
+	define( 'FORCE_SSL_ADMIN', true );
+		//define( 'WP_CONTENT_DIR', '.o/wp-content' );
+		//define( 'WP_CONTENT_URL', './orgmy.biz/tp/wp-content');
+	define('WP_POST_REVISIONS', false);
+	define( 'WP_CRON_LOCK_TIMEOUT', 60 );
+	define( 'EMPTY_TRASH_DAYS', 0 ); // Zero days
+	//define( 'WP_ALLOW_REPAIR', true );
+	define('AUTOSAVE_INTERVAL', 68940);
+	define('WP_MEMORY_LIMIT', '256M');
+	
+	define('WP_DEBUG', true);
+	define('SCRIPT_DEBUG', false);
+	define('WP_DEBUG_LOG', true);
+	define('WP_DEBUG_DISPLAY', true);
+	define('FORCE_SSL_LOGIN', true);
+
+
+
 // The Main Switch:
 define('CURRENT_SERVER','local');
 
